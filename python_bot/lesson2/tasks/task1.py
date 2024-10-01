@@ -3,17 +3,16 @@
 HELP = """
 help - напечатать справку по программе.
 add - добавить задачу в список (название задачи запрашиваем у пользователя).
-show - напечатать все добавленные задачи.""" 
+show/print - напечатать все добавленные задачи.""" 
 
 tasks = [] # Создание списка задач
 
-run = True
-while run:
-
+stop = False # Задаем переменной значение False
+while not stop:
     command = input('Введите команду ')
     if command == 'help':
         print(HELP) # Если вводит 'help' вывести на печать HELP
-    elif command == 'show':
+    elif command == 'show' or command == 'print':
         print(tasks) # Если вводит 'show' - вывести на печать все задачи
     elif command == 'add':
         task = input('Введите название задачи: ') # Если вводит 'add' - вывести запрорс на ввод названия задачи через input
@@ -21,10 +20,9 @@ while run:
         print('Задача добавлена')
     elif command == 'exit':
         print('Спасибо за использование! До свидания!')
-        break
+        stop = True
     else:
         print('Неизвестная команда')
+        print(HELP)
         # run = False # первый вариант цикла
-        print('До свидания!')
-        break # второй вариант завершения цикла при вводе неизвесной команды
-        
+        stop = True
