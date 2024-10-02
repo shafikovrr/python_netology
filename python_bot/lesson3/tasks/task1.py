@@ -20,3 +20,14 @@ def count_letters(my_list, letter):
 
 result = count_letters(my_list, letter)
 print(f'{letter} встречается {result} раз(а) в списке.')
+
+# Ответ из задания
+
+# def count_letter(word_list, letter):
+#   result = 0
+#   for word in word_list:
+#     if letter in word:
+#       result += 1
+#   return result
+
+# print(count_letter(['python', 'c++', 'c', 'scala', 'java'], 'c'))
