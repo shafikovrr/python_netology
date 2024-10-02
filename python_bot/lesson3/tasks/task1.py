@@ -8,8 +8,8 @@
 #     return count    
 #     print(count)
 
-my_list = input('Введите слова через пробел: ')
-letter = input('Введите букву для поиска: ')
+my_list = input('Введите слова через пробел: ') # ввод слов через пробел
+letter = input('Введите букву для поиска: ') # ввод искомой буквы
 
 def count_letters(my_list, letter):
     count = 0
