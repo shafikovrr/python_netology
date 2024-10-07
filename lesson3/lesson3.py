@@ -293,12 +293,74 @@
 #     y += x
 # print(y)
 
-while True:
-    x = input('Введите  команду: ')
-    if x == '1':
-        pass
-    elif x == '2':
-        pass
-    elif x == 'quite':
-        break
+# while True:
+#     x = input('Введите  команду: ')
+#     if x == '1':
+#         pass
+#     elif x == '2':
+#         pass
+#     elif x == 'quite':
+#         break
 
+# Цикл for - проходит по элементам любого итерируемого объекта (строки, списка и т.д.) и во время кажодго прохода выполняет заданную последовательность действий.abs
+
+# for element in list:
+#     element = element**2    # код который будет
+#     print(element)          # выполняется при каждой итерации
+
+# company_name = 'Orange'
+# for letter in company_name:
+#     print(letter)
+#     letter = letter.capitalize()
+#     print(letter) # у print - аргумент по умолчанию - end (разрыв строки)
+#     #print(letter, end='')
+
+
+# companies_capitalization =[
+#     ['Orange', 1.3],
+#     ['Maxisoft', 1.5],
+#     ['Headbook', 0.8],
+#     ['Nicola', 2.2]
+# ]
+
+# for company in companies_capitalization:
+#     print(f'Капитализация компании {company[0]} составляет {company[1]} миллионов рублей')
+# # Или
+# for company, capitalizatuion in companies_capitalization:
+#     print(f'Капитализация компании {company} составляет {capitalizatuion} миллионов рублей')
+
+# phrase = '640Кб должно хватить для любых задач. Билл Гейтс (по легенде)'
+
+# for letter in phrase:
+#     if letter == ' ':
+#         break
+#     print(letter, end='') # 640Кб
+
+
+# for letter in phrase:
+#     if letter == ' ':
+#         continue
+#     print(letter, end='') # 640Кбдолжнохватитьдлялюбыхзадач.БиллГейтс(полегенде)
+
+
+
+# for letter in phrase:
+#     if letter == ' ':
+#         pass
+#     print(letter, end='') # 640Кб должно хватить для любых задач. Билл Гейтс (по легенде)
+
+professions = ['IT', 'Физика', 'Математика']
+persons = [['Гейтс', 'Джобс', 'Возняк'], ['Энштейн', 'Фейнман'], ['Эвклин', 'Ньютон']]
+
+# for el in zip(professions, persons):
+#     print(el[0], ':')
+#     for letter in el[1]:
+#         if letter == ' ':
+#             pass 
+#         print(letter)
+
+for pro, names in zip(professions, persons):
+    print(f'{pro}:')
+    for name in names:
+        print(name)
+    print()
