@@ -116,7 +116,7 @@
 # sorted(list) - сортирует список
 month_list =['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
 
-income_list = [13000, 14000, 14300, 15000, 13800, 13000, 14900, 15200, 15300]
+# income_list = [13000, 14000, 14300, 15000, 13800, 13000, 14900, 15200, 15300]
 
 income_by_months = [['Jan', 13000], ['Feb', 14000], ['Mar', 14300], ['Apr', 15000], ['May', 13800], ['Jun', 13000], ['Jul', 14900], ['Aug', 15200], ['Sep', 15300]]
 # print(month_list[0]) # индексация - Jan
@@ -154,8 +154,8 @@ income_by_months = [['Jan', 13000], ['Feb', 14000], ['Mar', 14300], ['Apr', 1500
 # print(income_by_months)
 
 # Если хотим из сложного списка удалить один элемент 'Jan'
-income_by_months[0].remove('Jan')
-print(income_by_months)
+# income_by_months[0].remove('Jan')
+# print(income_by_months)
 
 
 # # Добавление в конец списка
@@ -169,14 +169,32 @@ print(income_by_months)
 # print(income_by_months)
 #
 #
+# # Возвращает значение индекса элемента списка
+income_list = [13000, 14000, 14300, 15000, 13800, 13000, 14900, 15200, 15300]
+# print(income_list.index(13000)) # находит первый со значением 13000 (второй не выводит)
 #
+# # Реверс значений списка
+# month_list.reverse()
+# print(month_list)
+# # аналогично
+#print(month_list[::-1])
 #
-#
-#
-#
-#
-#
-#
+
+# # Сортировка ()
+# print(sorted(income_list)) # по возрастанию
+# print(sorted(income_list, reverse=True)) # по убыванию
+
+
+print(sorted(income_list)) # sorted(income_list) - создан новый отсортированный список
+print(income_list) # income_list при этом не изменился (неизменяемые исходные данные)
+
+# метод sort
+income_list.sort() # применение метода sort - меняет исходный список
+print(income_list) # вывод исходного списка - измененный (отсортированный по возрастанию)
+print(income_list.sort()) # ничего нового не возвращает - меняет исходный объект
+
+
+
 #
 #
 #
