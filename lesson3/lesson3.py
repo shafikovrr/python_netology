@@ -349,8 +349,8 @@
 #         pass
 #     print(letter, end='') # 640Кб должно хватить для любых задач. Билл Гейтс (по легенде)
 
-professions = ['IT', 'Физика', 'Математика']
-persons = [['Гейтс', 'Джобс', 'Возняк'], ['Энштейн', 'Фейнман'], ['Эвклин', 'Ньютон']]
+# professions = ['IT', 'Физика', 'Математика']
+# persons = [['Гейтс', 'Джобс', 'Возняк'], ['Энштейн', 'Фейнман'], ['Эвклин', 'Ньютон']]
 
 # for el in zip(professions, persons):
 #     print(el[0], ':')
@@ -359,8 +359,8 @@ persons = [['Гейтс', 'Джобс', 'Возняк'], ['Энштейн', 'Ф�
 #             pass 
 #         print(letter)
 
-for pro, names in zip(professions, persons):
-    print(f'{pro}:')
-    for name in names:
-        print(name)
-    print()
+# for pro, names in zip(professions, persons):
+#     print(f'{pro}:')
+#     for name in names:
+#         print(name)
+#     print()
