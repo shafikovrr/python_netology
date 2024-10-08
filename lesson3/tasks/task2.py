@@ -35,3 +35,15 @@ for dish in cook_book: # задаем переменную dish (блюдо) и�
     print(f'\n{dish[0].title()}:') # dish[0] - в цикле выводит название вложенного списка с заглавной буквой - title()
     for ingredients in dish[1]: # задаем переменную ingredients в списке dish с индексом 1
         print(f'{ingredients[0]}, {ingredients[1] * person}{ingredients[2]}') # [[0] - 'картофель', [1] - 100, [2] - 'гр.']
+
+# эталонное решение
+# 
+# new_cook_book = []
+# for dish, ingredients in cook_book:
+#     print(dish)
+#     for ingredient in ingredients:
+#         ingredient_name = ingredient[0]
+#         ingredient_count = ingredient[1] * person
+#         ingredient_measure = ingredient[2]
+#         print(f'{ingredient_name}, {ingredient_count}{ingredient_measure}')
+#     print() 
