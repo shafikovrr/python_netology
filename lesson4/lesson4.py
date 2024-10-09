@@ -65,9 +65,42 @@
 
 courses_list = [
     {'title':'Java-разработчик с нуля',
-    'mentors': ['Павел Дерендяев', 'Алексей Яковлев', 'Сергей Сердюк']},
+    'mentors': ['Павел Дерендяев', 'Алексей Яковлев', 'Сергей Сердюк'], 'duration':11},
     {'title':'Веб-разработчик с нуля',
-    'mentors': ['Николай Лопин', 'Алена Батицкая', 'Алексей Дацков', 'Александр Беспоясов']},
+    'mentors': ['Николай Лопин', 'Алена Батицкая', 'Алексей Дацков', 'Александр Беспоясов'], 'duration':19},
     {'title':'Frontend-разработчик с нуля',
-    'mentors': ['Ильназ Гилязов', 'Татьяна Тен', 'Алена Батицкая', 'Алесандр Фитискин', 'Владимир Чебукин', 'Эдгар Нуруллин']}
+    'mentors': ['Ильназ Гилязов', 'Татьяна Тен', 'Алена Батицкая', 'Алесандр Фитискин', 'Владимир Чебукин', 'Эдгар Нуруллин'], 'duration':13}
 ]
+
+# for course in courses_list:
+#     print('Название курса: {}'.format(course['title']))
+#     print('Преподаватели: {}'.format(', '.join(course['mentors'])))
+#     print()
+
+# for course in courses_list:
+#     for k, v in course.items():
+#         print(f'ключ={k}, значение={v}')
+
+# max_count = 0 # сколько преподавателей
+# lider_id = -1 # количество преподавателей
+# for id, course in enumerate(courses_list):
+#     print('Название курса: {}'.format(course['title']))
+#     count = len(course['mentors'])
+#     print(f'количество преподавателей на курсе: {count}')
+#     if count > max_count:
+#         max_count = count
+#         lider_id = id
+# print('Наш лидер - курс {}, преподавателей: {}'.format(courses_list[id]['title'], len(courses_list[id]['mentors'])))
+
+new_course_dict = {}
+new_course_dict.setdefault('title', 'C++')
+# new_course_dict.setdefault('mentors', [])
+# new_course_dict.setdefault('mentors', ['Елена Никитина'])
+# new_course_dict['mentors'] = ['Олег Булыгин'] # перезаписал значение 'Елена Никитина'
+
+if 'mentors' not in new_course_dict.keys(): # проверка существования 'mentors' - если нет
+    new_course_dict['mentors'] = [] # создаем пустой список 'mentors'
+
+new_course_dict['mentors'].append('Олег Булыгин')
+new_course_dict.setdefault('duration', 15)
+print(new_course_dict)
