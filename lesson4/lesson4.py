@@ -72,35 +72,72 @@ courses_list = [
     'mentors': ['Ильназ Гилязов', 'Татьяна Тен', 'Алена Батицкая', 'Алесандр Фитискин', 'Владимир Чебукин', 'Эдгар Нуруллин'], 'duration':13}
 ]
 
-# for course in courses_list:
-#     print('Название курса: {}'.format(course['title']))
-#     print('Преподаватели: {}'.format(', '.join(course['mentors'])))
+# for course in courses_list: # course - это словарь первый, второй, третий по циклу (всего три словаря)
+#     print('Название курса: {}'.format(course['title'])) # узнаем название i-го курса в цикле по ключу 'title'
+#     print('Преподаватели: {}'.format(', '.join(course['mentors']))) # вывести всех преподавателей строкой (join) через запятую ', ' по ключу 'mentors'
 #     print()
+# .format() - аналог f-строк. В нужных местах ставим скобки {}, чтобы вставить вместо них нужную информацию
+# 
 
 # for course in courses_list:
-#     for k, v in course.items():
+#     for k, v in course.items(): # .items() возвращает ключ-значение (ключ=title, значение=Java-разработчик с нуля)
 #         print(f'ключ={k}, значение={v}')
 
-# max_count = 0 # сколько преподавателей
-# lider_id = -1 # количество преподавателей
-# for id, course in enumerate(courses_list):
+# ## Вывести название всех курсов, количество преподавателей на каждом курсе. Определить победителя по максимальному количеству преподавателей на курсе
+# max_count = 0 # наибольшее количество преподавателей
+# lider_id = -1 # порядковый номер курса (инициализируем отрицательным числом, так как ничего о нем не знаем)
+# for id, course in enumerate(courses_list): # enumerate() - превращаем список в итерируемый объект, т.е. появляется индекс, обрабатываемого в данный момент элемента (id)
 #     print('Название курса: {}'.format(course['title']))
-#     count = len(course['mentors'])
+#     count = len(course['mentors']) # количество элементов len() курса по ключу 'mentors' в элементе course - сколько всего преподавателей на каждом курсе
 #     print(f'количество преподавателей на курсе: {count}')
 #     if count > max_count:
 #         max_count = count
 #         lider_id = id
 # print('Наш лидер - курс {}, преподавателей: {}'.format(courses_list[id]['title'], len(courses_list[id]['mentors'])))
+# # courses_list[id] - получили только словарь. ['title'] далее достаем название курса.
+# # .format - внутри через запятую указываем те данные, которые нужно вывести в print в фигурных {} скобках
 
-new_course_dict = {}
-new_course_dict.setdefault('title', 'C++')
+# # Добавление нового курса в существующий словарь
+# new_course_dict = {} # создаем пустой словарь
+# new_course_dict.setdefault('title', 'C++')
 # new_course_dict.setdefault('mentors', [])
-# new_course_dict.setdefault('mentors', ['Елена Никитина'])
-# new_course_dict['mentors'] = ['Олег Булыгин'] # перезаписал значение 'Елена Никитина'
+# new_course_dict.setdefault('duration', 15)
+# print(new_course_dict) # Вывод - {'title': 'C++', 'mentors': [], 'duration': 15}
 
-if 'mentors' not in new_course_dict.keys(): # проверка существования 'mentors' - если нет
-    new_course_dict['mentors'] = [] # создаем пустой список 'mentors'
 
-new_course_dict['mentors'].append('Олег Булыгин')
+
+# new_course_dict = {} # создаем пустой словарь
+# new_course_dict.setdefault('title', 'C++')
+# new_course_dict.setdefault('mentors', [])
+# new_course_dict.setdefault('mentors', ['Елена Никитина']) # добавления нового преподавателя
+# new_course_dict.setdefault('duration', 15)
+# print(new_course_dict) # Вывод - {'title': 'C++', 'mentors': [], 'duration': 15}. mentors - пусто, после добавления нового преподавателя
+# # Команда setdefault() - проверяет, нет ли такого ключа (mentors) в словаре new_course_dict = {}. В первой команде уже присвоено значение [], поэтому добавить через setdefault не получится 
+
+# # Перезаписывается значение mentors - new_course_dict['mentors'] = ['Олег Булыгин']
+# new_course_dict = {} # создаем пустой словарь
+# new_course_dict.setdefault('title', 'C++')
+# new_course_dict.setdefault('mentors', ['Елена Никитина']) # добавления нового преподавателя
+# new_course_dict['mentors'] = ['Олег Булыгин'] # если присвоить новое значение, оно перезапишет значение 'Елена Никитина'
+# new_course_dict.setdefault('duration', 15)
+# print(new_course_dict)
+
+
+# Добавляет в конец новой значение в mentors - new_course_dict['mentors'].append('Олег Булыгин')
+new_course_dict = {} # создаем пустой словарь
+new_course_dict.setdefault('title', 'C++')
+new_course_dict.setdefault('mentors', ['Елена Никитина']) # добавления нового преподавателя
+new_course_dict['mentors'].append('Олег Булыгин') # добавляется новое значение, оно запишется после 'Елена Никитина'
 new_course_dict.setdefault('duration', 15)
 print(new_course_dict)
+
+
+# 
+# 
+
+# if 'mentors' not in new_course_dict.keys(): # проверка существования 'mentors' - если нет
+#     new_course_dict['mentors'] = [] # создаем пустой список 'mentors'
+
+# 
+# new_course_dict.setdefault('duration', 15)
+# 
