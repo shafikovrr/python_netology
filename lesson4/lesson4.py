@@ -63,14 +63,14 @@
 # Статические множества 
 # frozenset - неизменяемое множество. Доступны все действия над множествами, за исключением тех, которые их изменяют
 
-courses_list = [
-    {'title':'Java-разработчик с нуля',
-    'mentors': ['Павел Дерендяев', 'Алексей Яковлев', 'Сергей Сердюк'], 'duration':11},
-    {'title':'Веб-разработчик с нуля',
-    'mentors': ['Николай Лопин', 'Алена Батицкая', 'Алексей Дацков', 'Александр Беспоясов'], 'duration':19},
-    {'title':'Frontend-разработчик с нуля',
-    'mentors': ['Ильназ Гилязов', 'Татьяна Тен', 'Алена Батицкая', 'Алесандр Фитискин', 'Владимир Чебукин', 'Эдгар Нуруллин'], 'duration':13}
-]
+# courses_list = [
+#     {'title':'Java-разработчик с нуля',
+#     'mentors': ['Павел Дерендяев', 'Алексей Яковлев', 'Сергей Сердюк'], 'duration':11},
+#     {'title':'Веб-разработчик с нуля',
+#     'mentors': ['Николай Лопин', 'Алена Батицкая', 'Алексей Дацков', 'Александр Беспоясов'], 'duration':19},
+#     {'title':'Frontend-разработчик с нуля',
+#     'mentors': ['Ильназ Гилязов', 'Татьяна Тен', 'Алена Батицкая', 'Алесандр Фитискин', 'Владимир Чебукин', 'Эдгар Нуруллин'], 'duration':13}
+# ]
 
 # for course in courses_list: # course - это словарь первый, второй, третий по циклу (всего три словаря)
 #     print('Название курса: {}'.format(course['title'])) # узнаем название i-го курса в цикле по ключу 'title'
@@ -123,21 +123,93 @@ courses_list = [
 # print(new_course_dict)
 
 
-# Добавляет в конец новой значение в mentors - new_course_dict['mentors'].append('Олег Булыгин')
-new_course_dict = {} # создаем пустой словарь
-new_course_dict.setdefault('title', 'C++')
-new_course_dict.setdefault('mentors', ['Елена Никитина']) # добавления нового преподавателя
-new_course_dict['mentors'].append('Олег Булыгин') # добавляется новое значение, оно запишется после 'Елена Никитина'
-new_course_dict.setdefault('duration', 15)
-print(new_course_dict)
-
-
-# 
-# 
-
-# if 'mentors' not in new_course_dict.keys(): # проверка существования 'mentors' - если нет
-#     new_course_dict['mentors'] = [] # создаем пустой список 'mentors'
-
-# 
+# # Добавляет в конец новой значение в mentors - new_course_dict['mentors'].append('Олег Булыгин')
+# new_course_dict = {} # создаем пустой словарь
+# new_course_dict.setdefault('title', 'C++')
+# new_course_dict.setdefault('mentors', ['Елена Никитина']) # добавления нового преподавателя
+# new_course_dict['mentors'].append('Олег Булыгин') # .append() - добавление строку, а не список. добавляется новое значение, оно запишется после 'Елена Никитина'
 # new_course_dict.setdefault('duration', 15)
+# print(new_course_dict)
+
+
+# # Если нет ключа по преподавателям - new_course_dict.setdefault('mentors', ['Елена Никитина'])
+# new_course_dict = {} # создаем пустой словарь
+# new_course_dict.setdefault('title', 'C++')
+# # new_course_dict.setdefault('mentors', ['Елена Никитина']) # добавления нового преподавателя
+# new_course_dict['mentors'].append('Олег Булыгин') # .append() - добавление строку, а не список. добавляется новое значение, оно запишется после 'Елена Никитина'
+# new_course_dict.setdefault('duration', 15)
+# print(new_course_dict) # Вывод - ошибка ключа: KeyError: 'mentors' - отсутствует ключ 'mentors'
+
+
+# # Обход ошибки KeyError с помощью if
+# new_course_dict = {} # создаем пустой словарь
+# new_course_dict.setdefault('title', 'C++')
+# # проверка существования 'mentors'
+# if 'mentors' not in new_course_dict.keys(): # Если нет ключа mentors
+#     new_course_dict['mentors'] = [] # То, создаем пустой список 'mentors'
+# new_course_dict['mentors'].append('Олег Булыгин') # .append() - добавление строку, а не список. добавляется новое значение, оно запишется после 'Елена Никитина'
+# new_course_dict.setdefault('duration', 15)
+# print(new_course_dict) # Вывод - ошибка ключа: KeyError: 'mentors' - отсутствует ключ 'mentors'
+
+
+# # Проверка существования списка и создание его при отсутствии с помощью get и if is None
+# new_course_dict = {} # создаем пустой словарь
+# new_course_dict.setdefault('title', 'C++')
+# # проверка существования 'mentors'
+# # if 'mentors' not in new_course_dict.keys(): # Если нет ключа mentors
+# #     new_course_dict['mentors'] = [] # То, создаем пустой список 'mentors'
+# key = new_course_dict.get('mentors') # Создается ключ
+# if key is None: # Если ключа нет, то
+#     new_course_dict['mentors'] = [] # то создаем ключ, иначе код не выполниться 
+# new_course_dict['mentors'].append('Олег Булыгин') # .append() - добавление строку, а не список. добавляется новое значение, оно запишется после 'Елена Никитина'
+# new_course_dict.setdefault('duration', 15)
+# print(new_course_dict) # Вывод - {'title': 'C++', 'mentors': ['Олег Булыгин'], 'duration': 15}
 # 
+# 
+# 
+# # Создание пустого списка
+# new_course_dict = {} # создаем пустой словарь
+# new_course_dict.setdefault('title', 'C++')
+# new_course_dict.setdefault('mentors', [])
+# new_course_dict['mentors'].append('Олег Булыгин') # .append() - добавление строку, а не список. добавляется новое значение, оно запишется после 'Елена Никитина'
+# new_course_dict.setdefault('duration', 15)
+# print(new_course_dict) # Вывод - {'title': 'C++', 'mentors': ['Олег Булыгин'], 'duration': 15}
+
+
+# Множества
+# Проверка преподавателя, работающего на разных курсах
+
+courses_list = [
+    {'title':'Java-разработчик с нуля',
+    'mentors': ['Павел Дерендяев', 'Алексей Яковлев', 'Сергей Сердюк'], 'duration':11},
+    {'title':'Веб-разработчик с нуля',
+    'mentors': ['Николай Лопин', 'Алена Батицкая', 'Алексей Дацков', 'Александр Беспоясов'], 'duration':19},
+    {'title':'Frontend-разработчик с нуля',
+    'mentors': ['Ильназ Гилязов', 'Татьяна Тен', 'Алена Батицкая', 'Алесандр Фитискин', 'Владимир Чебукин', 'Эдгар Нуруллин'], 'duration':13}
+]
+
+java_set = set(courses_list[0]['mentors']) # список 'mentors' преобразуем в множество с помощью set()
+web_set = set(courses_list[1]['mentors'])
+frontend_set = set(courses_list[2]['mentors'])
+print(f'{type(java_set)}, {java_set}') # вывели тип данных (множество class 'set')
+print()
+print(f'Java & Web: {java_set | web_set}') # проверка пересечения множества java_set и web_set
+# Ответ: Java & Web: set()
+print(f'Java & Frontend: {java_set & frontend_set}') # Java & Frontend: set()
+print(f'Frontend & Web: {frontend_set & web_set}') # Frontend & Web: {'Алена Батицкая'}
+
+# Разность
+# print('Тестируем разности')
+# print(f'Разность Frontend и Web: {frontend_set - web_set}')
+print()
+print('Тестируем разности')
+print(f'Разность Web и Frontend: {web_set - frontend_set}')
+print(f'Разность Web и Frontend: {web_set.difference(frontend_set)}') # аналог предыдущего кода {web_set - frontend_set}
+
+# Cимметрическая разность/
+# 1 операция - пересечение множеств Web и Frontend - получаем 'Алена Батицкая'
+# 2 операция - соединение множеств Web и Frontend (все преподаватели в Web и Frontend)
+# 3 операция - вычетание из 2-ой операции 'Алена Батицкая'
+print()
+print(f'Симметрическая разность Web и Frontend: {web_set ^ frontend_set}')
+print(f'Симметрическая разность Web и Frontend: {web_set.symmetric_difference(frontend_set)}')
