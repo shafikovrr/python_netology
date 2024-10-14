@@ -7,3 +7,10 @@ for key, value in stats.items(): # для ключа и значения в stat
         max_value = value # приравнять переменной max_value значение value
         max_key = key # и переменной max_key задать значение ключа с максимальным value 
 print(max_key) # вывести на печать max_key (ключ с максимальным объемом продаж)
+
+
+# Эталонное решение из ответа на задание
+
+stats = {'facebook': 55, 'yandex': 120, 'vk': 115, 'google': 99, 'email': 42, 'ok': 98}
+new_stats = sorted(stats.items(), key=lambda x: x[1], reverse=True)
+print(new_stats[0][0])

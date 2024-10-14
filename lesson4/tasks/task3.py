@@ -33,3 +33,22 @@ print('Количество запросов с двумя словами: ', tw
 print('Количество запросов с тремя словами: ', three, 'или в процентах', percent_three)
 
 print(percent_one + percent_two + percent_three)
+
+# Эталонное решение из ответа на задание
+
+queries = [
+    'смотреть сериалы онлайн',
+    'новости спорта',
+    'афиша кино',
+    'курс доллара',
+    'сериалы этим летом',
+    'курс по питону',
+    'сериалы про спорт',
+    'нетология'
+]
+number_words = [len(query.split()) for query in queries]
+result = dict.fromkeys(set(number_words), 0)
+for count_word in result:
+    result[count_word] = number_words.count(count_word)
+for word in result.items():
+    print(f'Запросов с {word[0]} словами(словом) -  {round((word[1] * 100 / len(queries)), 2)}%')

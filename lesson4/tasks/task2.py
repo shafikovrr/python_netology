@@ -7,3 +7,13 @@ for id in ids.values(): # 1 ур. перебираем: для id во всех 
     for uniq in id: # 2 ур. для uniq в id ([213, 213, 213, 15, 213], [54, 54, 119, 119, 119], [213, 98, 98, 35])
         geo_ids.add(uniq) # добавляем элемент во множество geo_ids
 print(geo_ids)
+
+# Эталонное решение из ответа на задание
+
+ids = {'user1': [213, 213, 213, 15, 213],
+       'user2': [54, 54, 119, 119, 119],
+       'user3': [213, 98, 98, 35]}
+my_set = set()
+for geo_ids in ids.values():
+    my_set |= set(geo_ids)
+print(list(my_set))
