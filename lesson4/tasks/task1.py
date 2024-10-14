@@ -11,12 +11,12 @@ geo_logs = [
     {'visit10': ['Архангельск', 'Россия']}
 ]
 
-geo_logs_russia = {}
-geo_logs_russia.setdefault('visit', [])
-for visit in geo_logs:
-    for russia in visit:
-        if 'Россия' in visit[russia]:
-            geo_logs_russia['visit'].append(visit[russia])
-print(geo_logs_russia)
+geo_logs_russia = {} # создаем пустой словарь 
+geo_logs_russia.setdefault('visit', []) # задаем ключ 'visit' в словарь geo_logs_russia
+for visit in geo_logs: # для visit1, visit2, visit3 ... visit 10 из geo_logs
+    for russia in visit:  # для каждого значения ключа из visit ('Москва', 'Россия'; 'Дели', 'Индия'  и т.д.)
+        if 'Россия' in visit[russia]: # проверяем условие: если есть слово 'Россия' в  visit[russia] - (['Москва', 'Россия']) 
+            geo_logs_russia['visit'].append(visit[russia]) # добавляем в конец нового словаря geo_logs_russia с ключом 'visit' значение  содержащее 'Россия' - ['Владимир', 'Россия'] и т.д.
+print(geo_logs_russia) # {'visit': [['Москва', 'Россия'], ['Владимир', 'Россия'], ['Тула', 'Россия'], ['Тула', 'Россия'], ['Курск', 'Россия'], ['Архангельск', 'Россия']]}
    
 
