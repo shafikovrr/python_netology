@@ -138,7 +138,157 @@
 
 # # Nonlocal
 
-def say_hi():
-    name = 'Rinat'
+# def say_hi():
+#     name = 'Rinat'
+#     def get_name():
+#         name = input('Введите имя')
+#         return name
+#     get_name()
+#     print(f'Hello, {name}')
+
+# say_hi() # Вывод: Hello, Rinat, так как вызов get_name и print не во вложенной функции - имя берется из name = 'Rinat'
+# верхний уровень во вложенный не лезет.  
 
 
+# def say_hi():
+#     name = 'Rinat'
+#     def get_name():
+#         nonlocal name # задаем значение переменной name как не локальная, т.е. она становиться локальной для функции выше
+#         name = input('Введите имя')
+#         return name
+#     get_name()
+#     print(f'Hello, {name}')
+
+# say_hi()
+# # nonlocal - поднимает переменную на уровень вверх, но не глобально
+# # Глобальных переменных делать не надо
+
+# # Анонимные функции или lambda
+
+#              что возвращает функция без return
+# lambda x, pow: x**pow
+#      параметр функции
+
+# func = lambda x, y: x + y
+
+# print(func(5, 7))
+
+# # Методы - это функции, которые "принадлежат" к определенному объекту
+# У каждого типа объектов есть свои методы.
+
+# Методы списков:   Методы строк:       Методы словарей:
+#.index()           .capitalize()       .keys()
+#.count()           .upper()            .values()
+#.append()          .lower()            .items()
+#.remove()          .replace()
+#.revers()          .count()
+
+student_list = [
+    {'name': 'Василий', 'surname': 'Теркин', 'gender': 'м', 'program_exp': True, 'grade': [8, 8, 9, 10, 9], 'exam': 8},
+    {'name': 'Мария', 'surname': 'Павлова', 'gender': 'ж', 'program_exp': True, 'grade': [7, 8, 9, 7, 9], 'exam': 9},
+    {'name': 'Ирина', 'surname': 'Андреева', 'gender': 'ж', 'program_exp': False, 'grade': [10, 9, 8, 10, 10], 'exam': 7},
+    {'name': 'Татьяна', 'surname': 'Сидорова', 'gender': 'ж', 'program_exp': False, 'grade': [7, 8, 8, 9, 8], 'exam': 10},
+    {'name': 'Иван', 'surname': 'Васильевич', 'gender': 'м', 'program_exp': True, 'grade': [9, 8, 9, 6, 9], 'exam': 5},
+    {'name': 'Роман', 'surname': 'Золотарев', 'gender': 'м', 'program_exp': False, 'grade': [8, 9, 9, 6, 9], 'exam': 6}
+]
+
+# Функция - средняя оценка за экзамен
+
+def get_avg_ex_grade(students): # параметр функции - какой то список студентов
+    sum_ex = 0
+    for student in students:
+        #print(student)
+        sum_ex += student['exam']
+    return round(sum_ex / len(students), 2)
+#print(get_avg_ex_grade(student_list))
+
+# Функция - средняя оценка за домашнее задание у всей группы
+
+def get_avg_hw_grade(students): # параметр функции - какой то список студентов
+    sum_hw = 0
+    for student in students:
+        #print(student)
+        sum_hw += sum(student['grade']) / len(student['grade'])
+    return round(sum_hw / len(student_list), 2)
+#print(get_avg_hw_grade(student_list))
+
+# Функция - средняя оценка за домашнее задание отдельно у 'м' и 'ж'
+
+def get_avg_hw_grade(students, sex='ж'): # параметр функции - какой то список студентов
+    sum_hw = 0
+    count = 0
+    for student in students:
+        if student['gender'] == sex: 
+            #print(student)
+            sum_hw += sum(student['grade']) / len(student['grade'])
+            count += 1
+    return round(sum_hw / count, 2)
+# print('ж', get_avg_hw_grade(student_list))
+# print('м', get_avg_hw_grade(student_list, 'м'))
+
+def get_avg_hw_grade(students, sex=None): # параметр функции - какой то список студентов, второй параметр не равен м и ж
+    sum_hw = 0
+    count = 0
+    for student in students:
+        if student['gender'] == sex or sex is None: 
+            #print(student)
+            sum_hw += sum(student['grade']) / len(student['grade'])
+            count += 1
+    return round(sum_hw / count, 2)
+# print('общее', get_avg_hw_grade(student_list))
+# print('м', get_avg_hw_grade(student_list, 'м'))
+# print('ж', get_avg_hw_grade(student_list, 'ж'))
+
+
+
+def get_avg_hw_grade(students, sex=None, exp=None): # параметр функции - какой то список студентов, второй параметр не равен м и ж
+    sum_hw = 0
+    count = 0
+    for student in students:
+        if student['gender'] == sex and exp is None or\
+        (sex is None and exp is None) or\
+        (student['gender'] == sex and student['program_exp'] == exp) or\
+        (sex is None and student['program_exp'] == exp):
+            #print(student)
+            sum_hw += sum(student['grade']) / len(student['grade'])
+            count += 1
+    return round(sum_hw / count, 2)
+
+
+# print('ж', get_avg_hw_grade(student_list, 'ж')) # средняя оценка по ж
+# print('м', get_avg_hw_grade(student_list, 'м')) # средняя оценка пр м
+# print('общее', get_avg_hw_grade(student_list)) # средняя оценка по м + ж 
+
+# print('ж', get_avg_hw_grade(student_list, 'ж', False)) # средняя по ж без опыта
+# print('м', get_avg_hw_grade(student_list, 'м', False)) # средняя по м без опыта
+# print('общее', get_avg_hw_grade(student_list, 'ж', True)) # средняя по ж с опыта
+# print('общее', get_avg_hw_grade(student_list, None, True)) # средняя по всем только с опытом
+# print('общее', get_avg_hw_grade(student_list, exp=True)) # средняя по всем только с опытом
+
+# def main():
+#     while True:
+#         user_input = input('Введите команду')
+#         if user_input == '1':
+#             print(get_avg_ex_grade(student_list))
+#         elif user_input == '2':
+#             print(get_avg_hw_grade(student_list))
+#         elif user_input == '3':
+#             print(get_avg_hw_grade(student_list, 'ж', False))
+#         elif user_input == 'q':
+#             break
+
+# main()
+
+def main(students):
+    while True:
+        user_input = input('Введите команду')
+        if user_input == '1':
+            print(get_avg_ex_grade(students))
+        elif user_input == '2':
+            print(get_avg_hw_grade(students))
+        elif user_input == '3':
+            print(get_avg_hw_grade(students, 'ж', False))
+        elif user_input == 'q':
+            break
+
+main(student_list)
