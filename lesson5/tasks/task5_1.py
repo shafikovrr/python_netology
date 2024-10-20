@@ -22,16 +22,20 @@ def people_dict_values(dict_list):
         if number_doc_document == dict_item['number']:
             print(f"{dict_item['name']}")
 
-
-
-
+# Программа спрашивает номер документа, и затем выводит номер полки, на которой он находится
+def shelf(directories):
+    doc_number = input("Номер документа ")
+    for item in directories.items():
+        if doc_number in item[1]:
+            return print(f"'Номер полки: ' {item[0]}")
+        
 def my_def(students):
     while True:
         user_input = input('Введите команду: ')
         if user_input == 'p':
             people_dict_values(documents)
         elif user_input == 's':
-            shelf_dictionary_values(directories)
+            shelf(directories)
         elif user_input == 'l':
             list_dict_values(documents)
         elif user_input == 'q':
