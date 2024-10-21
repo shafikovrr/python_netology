@@ -45,6 +45,29 @@ def add_dict_values(directories, documents):
     documents.append({"type": add_value[1], "number": add_value[2], "name": add_value[3]})
     directories[add_value[0]].append(add_value[2])
 
+
+# Команда, которая спросит номер документа и удалит его из каталога и из перечня полок. 
+# Предусмотрите сценарий, когда пользователь вводит несуществующий документ
+
+# не выполнено 
+
+# Команда, которая спросит номер документа и целевую полку и переместит его с текущей полки на целевую. 
+# Корректно обработайте кейсы, когда пользователь пытается переместить несуществующий документ или переместить документ на несуществующую полку
+
+# не выполнено 
+
+# Команда, которая спросит номер новой полки и добавит ее в перечень. 
+# Предусмотрите случай, когда пользователь добавляет полку, которая уже существует.;
+
+def add_shelf_values(directories):
+    shelf_number = input('Введите номер новой полки: ')
+    if shelf_number not in directories:
+        directories[shelf_number] = []
+        return #print(directories)
+    print('Такая полка уже существует')
+    print(directories)       
+
+
 # Основная функция меню вызова команд
 def my_def(students):
     while True:
@@ -57,6 +80,12 @@ def my_def(students):
             add_dict_values(directories, documents)
         elif user_input == 'l':
             list_dict_values(documents)
+        elif user_input == 'as':
+            add_shelf_values(directories)
+        elif user_input == 'm':
+            move_shelf_values(directories, documents)
+        elif user_input == 'd':
+            delete_document(directories, documents)
         elif user_input == 'q':
             break
         else:
