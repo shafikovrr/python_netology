@@ -27,11 +27,14 @@ def people_dict_values(dict_list):
 # Функция спрашивает номер документа, и затем выводит номер полки, на которой он находится
 def shelf_dict_values(directories):
     doc_number = input("Номер документа ")
+    found = False
     for item in directories.items():
         if doc_number in item[1]:
             return print(f"'Номер полки: ' {item[0]}")
-        else:
-            print('Такого номера документа не существует')
+            found = True
+            break
+    if not found:
+        print('Такого номера документа не существует')
 
 # Функция добавит новый документ в каталог и в перечень полок, спросив его номер, тип, имя владельца и номер полки, на котором он будет храниться
 def add_dict_values(directories, documents):
